@@ -14,24 +14,34 @@ class RecrutementEtape3
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $id_recrutement_etape_2 = null;
+    #[ORM\ManyToOne(targetEntity: RecrutementEtape2::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?RecrutementEtape2 $etape2 = null;
+
+    /*#[ORM\Column]
+    private ?int $id_recrutement_etape_2 = null;*/
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $sujet_recherche = null;
 
-    #[ORM\Column(type: Types::BLOB)]
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cvFilename = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $videoFilename = null;
+
+    /*#[ORM\Column(type: Types::BLOB)]
     private $cv;
 
     #[ORM\Column(type: Types::BLOB)]
-    private $vidéo_présentation;
+    private $vidéo_présentation;*/
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdRecrutementEtape2(): ?int
+    /*public function getIdRecrutementEtape2(): ?int
     {
         return $this->id_recrutement_etape_2;
     }
@@ -39,6 +49,18 @@ class RecrutementEtape3
     public function setIdRecrutementEtape2(int $id_recrutement_etape_2): static
     {
         $this->id_recrutement_etape_2 = $id_recrutement_etape_2;
+
+        return $this;
+    }*/
+
+    public function getEtape2(): ?RecrutementEtape2
+    {
+        return $this->etape2;
+    }
+
+    public function setEtape2(RecrutementEtape2 $etape2): static
+    {
+        $this->etape2 = $etape2;
 
         return $this;
     }
@@ -55,7 +77,7 @@ class RecrutementEtape3
         return $this;
     }
 
-    public function getCv()
+    /*public function getCv()
     {
         return $this->cv;
     }
@@ -75,6 +97,30 @@ class RecrutementEtape3
     public function setVidéoPrésentation($vidéo_présentation): static
     {
         $this->vidéo_présentation = $vidéo_présentation;
+
+        return $this;
+    }*/
+
+    public function getCvFilename(): ?string
+    {
+        return $this->cvFilename;
+    }
+
+    public function setCvFilename(?string $cvFilename): static
+    {
+        $this->cvFilename = $cvFilename;
+
+        return $this;
+    }
+
+    public function getVideoFilename(): ?string
+    {
+        return $this->videoFilename;
+    }
+
+    public function setVideoFilename(?string $videoFilename): static
+    {
+        $this->videoFilename = $videoFilename;
 
         return $this;
     }

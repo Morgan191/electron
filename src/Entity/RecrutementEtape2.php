@@ -2,19 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\RerutementEtape2Repository;
+use App\Repository\RecrutementEtape2Repository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: RerutementEtape2Repository::class)]
-class RerutementEtape2
+#[ORM\Entity(repositoryClass: RecrutementEtape2Repository::class)]
+class RecrutementEtape2
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: "integer")]
     private ?int $id_recrutement = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -44,8 +44,8 @@ class RerutementEtape2
     #[ORM\Column]
     private ?int $année_cursus = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private $carte_étudiant;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $carte_étudiant = null; // Chemin du fichier carte étudiant
 
     public function getId(): ?int
     {
@@ -112,12 +112,12 @@ class RerutementEtape2
         return $this;
     }
 
-    public function getécoleActuelle(): ?string
+    public function getÉcoleActuelle(): ?string
     {
         return $this->école_actuelle;
     }
 
-    public function setécoleActuelle(string $école_actuelle): static
+    public function setÉcoleActuelle(string $école_actuelle): static
     {
         $this->école_actuelle = $école_actuelle;
 
@@ -172,12 +172,12 @@ class RerutementEtape2
         return $this;
     }
 
-    public function getCarteétudiant()
+    public function getCarteEtudiant(): ?string
     {
         return $this->carte_étudiant;
     }
 
-    public function setCarteétudiant($carte_étudiant): static
+    public function setCarteEtudiant(string $carte_étudiant): static
     {
         $this->carte_étudiant = $carte_étudiant;
 

@@ -13,82 +13,85 @@ class AncienMembreMeta
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $id_anciens_membres = null;
+    #[ORM\ManyToOne(targetEntity: AncienMembre::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    //#[ORM\Column]
+    //private ?int $ancienMembreId = null;
+    private ?AncienMembre $ancienMembre = null;
 
     #[ORM\Column(length: 10)]
-    private ?string $durée_cursus = null;
+    private ?string $dureeCursus = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $thème_recherche = null;
+    private ?string $themeRecherche = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $prix_année = null;
+    private ?string $prixAnnee = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $thème_actuel = null;
+    private ?string $themeActuel = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdAnciensMembres(): ?int
+    public function getAncienMembre(): ?AncienMembre
     {
-        return $this->id_anciens_membres;
+        return $this->ancienMembre;
     }
 
-    public function setIdAnciensMembres(int $id_anciens_membres): static
+    public function setAncienMembre(AncienMembre $ancienMembre): static
     {
-        $this->id_anciens_membres = $id_anciens_membres;
+        $this->ancienMembre = $ancienMembre;
 
         return $this;
     }
 
-    public function getDuréeCursus(): ?string
+    public function getDureeCursus(): ?string
     {
-        return $this->durée_cursus;
+        return $this->dureeCursus;
     }
 
-    public function setDuréeCursus(string $durée_cursus): static
+    public function setDureeCursus(string $duree_cursus): static
     {
-        $this->durée_cursus = $durée_cursus;
+        $this->dureeCursus = $duree_cursus;
 
         return $this;
     }
 
-    public function getThèmeRecherche(): ?string
+    public function getThemeRecherche(): ?string
     {
-        return $this->thème_recherche;
+        return $this->themeRecherche;
     }
 
-    public function setThèmeRecherche(string $thème_recherche): static
+    public function setThemeRecherche(string $thème_recherche): static
     {
-        $this->thème_recherche = $thème_recherche;
+        $this->themeRecherche = $thème_recherche;
 
         return $this;
     }
 
-    public function getPrixAnnée(): ?string
+    public function getPrixAnnee(): ?string
     {
-        return $this->prix_année;
+        return $this->prixAnnee;
     }
 
-    public function setPrixAnnée(string $prix_année): static
+    public function setPrixAnnee(string $prix_annee): static
     {
-        $this->prix_année = $prix_année;
+        $this->prixAnnee = $prix_annee;
 
         return $this;
     }
 
-    public function getThèmeActuel(): ?string
+    public function getThemeActuel(): ?string
     {
-        return $this->thème_actuel;
+        return $this->themeActuel;
     }
 
-    public function setThèmeActuel(string $thème_actuel): static
+    public function setThemeActuel(string $theme_actuel): static
     {
-        $this->thème_actuel = $thème_actuel;
+        $this->themeActuel = $theme_actuel;
 
         return $this;
     }

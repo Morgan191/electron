@@ -17,16 +17,16 @@ class AncienMembre
     private ?string $nom = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $prénom = null;
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $école = null;
+    private ?string $ecole = null;
 
     #[ORM\Column(length: 100)]
     private ?string $cursus = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $spécialité = null;
+    private ?string $specialite = null;
 
     public function getId(): ?int
     {
@@ -45,26 +45,26 @@ class AncienMembre
         return $this;
     }
 
-    public function getPrénom(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->prénom;
+        return $this->prenom;
     }
 
-    public function setPrénom(string $prénom): static
+    public function setPrenom(string $prenom): static
     {
-        $this->prénom = $prénom;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
-    public function getécole(): ?string
+    public function getecole(): ?string
     {
-        return $this->école;
+        return $this->ecole;
     }
 
-    public function setécole(string $école): static
+    public function setecole(string $ecole): static
     {
-        $this->école = $école;
+        $this->ecole = $ecole;
 
         return $this;
     }
@@ -81,14 +81,14 @@ class AncienMembre
         return $this;
     }
 
-    public function getSpécialité(): ?string
+    public function getSpecialite(): ?string
     {
-        return $this->spécialité;
+        return $this->specialite;
     }
 
-    public function setSpécialité(string $spécialité): static
+    public function setSpecialite(string $specialite): static
     {
-        $this->spécialité = $spécialité;
+        $this->specialite = $specialite;
 
         return $this;
     }

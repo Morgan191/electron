@@ -2,18 +2,18 @@
 
 namespace App\Repository;
 
-use App\Entity\RerutementEtape2;
+use App\Entity\RecrutementEtape2;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<RerutementEtape2>
  */
-class RerutementEtape2Repository extends ServiceEntityRepository
+class RecrutementEtape2Repository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RerutementEtape2::class);
+        parent::__construct($registry, RecrutementEtape2::class);
     }
 
     //    /**
