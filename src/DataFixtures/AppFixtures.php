@@ -3,12 +3,22 @@
 namespace App\DataFixtures;
 
 use App\Entity\AncienMembre;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private $userPasswordHasher;
+
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
+    {
+        $this->userPasswordHasher = $userPasswordHasher;
+    }
+
+
     public function load(ObjectManager $manager): void
     {
 
@@ -22,7 +32,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("ENSAM ParisTech");
        $ancienMembre->setCursus("Ingénierie Mécanique");
        $ancienMembre->setSpecialite("Fabrication additive (impression 3D métal)");
-       $ancienMembre->setDureeCursus(4);
+       $ancienMembre->setDureeCursus("4 ans");
        $ancienMembre->setThemeRecherche("Impression 3D métal pour prothèses médicales");
        $ancienMembre->setPrixAnnee("Prix Jeune Ingénieur Arts et Métiers (2022)");
        $ancienMembre->setThemeActuel("Biomécanique et implants imprimés en 3D");
@@ -34,7 +44,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("Télécom Paris");
        $ancienMembre->setCursus("Informatique et Réseaux");
        $ancienMembre->setSpecialite("Objets connectés (IoT)");
-       $ancienMembre->setDureeCursus(3);
+       $ancienMembre->setDureeCursus("3 ans");
        $ancienMembre->setThemeRecherche("Capteurs connectés pour serre intelligente");
        $ancienMembre->setPrixAnnee("Trophée IoT France (2021)");
        $ancienMembre->setThemeActuel("Systèmes autonomes pour agriculture de précision");
@@ -46,7 +56,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("ENSCI - Les Ateliers");
        $ancienMembre->setCursus("Design Industriel");
        $ancienMembre->setSpecialite("Prototypage rapide");
-       $ancienMembre->setDureeCursus(4);
+       $ancienMembre->setDureeCursus("4 ans");
        $ancienMembre->setThemeRecherche("Design de mobilier en matériaux recyclés");
        $ancienMembre->setPrixAnnee("Prix Design Durable ENSCI (2023)");
        $ancienMembre->setThemeActuel("Écodesign et économie circulaire");
@@ -58,7 +68,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("IUT de Cachan");
        $ancienMembre->setCursus("Génie Électrique et Informatique Industrielle (GEI...");
        $ancienMembre->setSpecialite("Automatisation");
-       $ancienMembre->setDureeCursus(3);
+       $ancienMembre->setDureeCursus("3 ans");
        $ancienMembre->setThemeRecherche("Automatisation d’un bras robotisé open-source");
        $ancienMembre->setPrixAnnee("Prix Jeune Ingénieur Arts et Métiers (2020)");
        $ancienMembre->setThemeActuel("Robotique accessible pour les makers");
@@ -70,7 +80,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("Sciences des matériaux");
        $ancienMembre->setCursus("Université de Strasbourg");
        $ancienMembre->setSpecialite("Polymères biosourcés");
-       $ancienMembre->setDureeCursus(4);
+       $ancienMembre->setDureeCursus("4 ans");
        $ancienMembre->setThemeRecherche("Développement de filaments bio pour imprimantes");
        $ancienMembre->setPrixAnnee("Bourse CNRS Innovation (2023)");
        $ancienMembre->setThemeActuel("Matériaux biosourcés pour impression 3D");
@@ -82,7 +92,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("Centrale Lyon");
        $ancienMembre->setCursus("Énergie et Environnement");
        $ancienMembre->setSpecialite("Systèmes solaires DIY");
-       $ancienMembre->setDureeCursus(3);
+       $ancienMembre->setDureeCursus("3 ans");
        $ancienMembre->setThemeRecherche("Microcentrale solaire pour site isolé");
        $ancienMembre->setPrixAnnee("Prix Énergie Jeune Ingénieur (2022)");
        $ancienMembre->setThemeActuel("Energies renouvelables open hardware");
@@ -94,7 +104,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("Epitech");
        $ancienMembre->setCursus("Développement logiciel");
        $ancienMembre->setSpecialite("Interfaces homme-machine (IHM)");
-       $ancienMembre->setDureeCursus(4);
+       $ancienMembre->setDureeCursus("4 ans");
        $ancienMembre->setThemeRecherche("Interfaces tactiles pour les déficients visuels");
        $ancienMembre->setPrixAnnee("Hackathon Accessibilité Paris (2021)");
        $ancienMembre->setThemeActuel("Accessibilité numérique et IA");
@@ -106,7 +116,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("ENSAD");
        $ancienMembre->setCursus("Design d’espace");
        $ancienMembre->setSpecialite("Fabrication bois numérique (CNC)");
-       $ancienMembre->setDureeCursus(3);
+       $ancienMembre->setDureeCursus("3 ans");
        $ancienMembre->setThemeRecherche("Mobilier modulaire en contreplaqué découpé CNC");
        $ancienMembre->setPrixAnnee("Prix Énergie Jeune Ingénieur (2021)");
        $ancienMembre->setThemeActuel("Architecture paramétrique DIY");
@@ -118,7 +128,7 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("INSA Toulouse");
        $ancienMembre->setCursus("Génie Mécanique");
        $ancienMembre->setSpecialite("Modélisation CAO / SolidWorks");
-       $ancienMembre->setDureeCursus(4);
+       $ancienMembre->setDureeCursus("4 ans");
        $ancienMembre->setThemeRecherche("Boîtier de test moteur imprimé en 3D");
        $ancienMembre->setPrixAnnee("Prix du Meilleur Projet Étudiant INSA (2022)");
        $ancienMembre->setThemeActuel("Simulation mécanique embarquée");
@@ -130,12 +140,21 @@ class AppFixtures extends Fixture
        $ancienMembre->setEcole("Université de Bordeaux");
        $ancienMembre->setCursus("Physique Appliquée");
        $ancienMembre->setSpecialite("Laser et découpe numérique");
-       $ancienMembre->setDureeCursus(3);
+       $ancienMembre->setDureeCursus("3 ans");
        $ancienMembre->setThemeRecherche("Optimisation des découpes laser");
        $ancienMembre->setPrixAnnee("Trophée IoT France (2020)");
        $ancienMembre->setThemeActuel("Photonique appliquée à la microfabrication");
        $manager->persist($ancienMembre);
        // }
+
+       $user = new User;
+       $user->setEmail("user@gmail.com");
+       $user->setNom($faker->name);
+       $user->setPrenom($faker->firstname);
+       $user->setPassword($this->userPasswordHasher->hashPassword($user, "123"));
+       $user->setRoles(['ROLE_USER']);
+       $manager->persist($user);
+
 
         $manager->flush();
     }

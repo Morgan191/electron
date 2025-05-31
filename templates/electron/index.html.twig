@@ -1,7 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bonjour{% endblock %}
+{% block title %}Bienvenue chez Electron{% endblock %}
 
 {% block body %}
+    <div class="container mt-5">
     <h1 class="text-center mt-5">Bienvenue chez Electron</h1>
+    <p>texte explicatif</p>
+    </div>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>École</th>
+                <th>Cursus</th>
+                <th>Spécialité</th>
+                <th>Durée</th>
+                <th>Thème recherche</th>
+                <th>Prix</th>
+                <th>Thème actuel</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for membre in anciens %}
+            <tr>
+                <td>{{ membre.nom }}</td>
+                <td>{{ membre.prenom }}</td>
+                <td>{{ membre.ecole }}</td>
+                <td>{{ membre.cursus }}</td>
+                <td>{{ membre.specialite }}</td>
+                <td>{{ membre.dureeCursus }}</td>
+                <td>{{ membre.themeRecherche }}</td>
+                <td>{{ membre.prixAnnee }}</td>
+                <td>{{ membre.themeActuel }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="9">Aucun membre trouvé.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
