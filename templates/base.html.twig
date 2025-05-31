@@ -67,13 +67,16 @@
 								<a class="nav-link active" aria-current="page" href="{{ path('app_logout')}}">Déconnexion</a>
 							</li>
 
-              {% else %}
-                
+						{% else %}
 
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ path('app_login')}}">Connexion</a>
 
-						{% endif %}
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="{{ path('app_register')}}">Candidat</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="{{ path('app_login')}}">Connexion</a>
+
+							{% endif %}
 
 
 						</li>
@@ -81,6 +84,17 @@
 				</div>
 			</div>
 		</nav>
+
+
+    {#flash message #}
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
 		{% block body %}{% endblock %}
 	</body>
 </html>
