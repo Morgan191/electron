@@ -1,0 +1,28 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}
+	{{ (app.request.get('_route') == 'app_admin_candidat_ajouter' : 'Ajouter' : 'Modifier') }}un candidat{% endblock %}
+
+{% block body %}
+	<h1>{{ (app.request.get('_route') == 'app_admin_candidat_ajouter' : 'Ajouter' : 'Modifier') }} un candidat</h1>
+
+	{{ form_start(form) }}
+
+	{{ for_row(form.nom) }}
+	{{ for_row(form.prenom) }}
+	{{ for_row(form.email) }}
+	{{ for_row(form.dateNaissance) }}
+	{{ for_row(form.adresse) }}
+	{{ for_row(form.telephone) }}
+	{{ for_row(form.nationalite) }}
+	{{ for_row(form.ecoleActuelle) }}
+	{{ for_row(form.nomCursus) }}
+	{{ for_row(form.specialite) }}
+	{{ for_row(form.dateEntreeCursus) }}
+	{{ for_row(form.anneeCusrsus) }}
+	{{ for_row(form.sujetRecherche) }}
+
+	<button class="btn btn-success" type="submit">{{ (app.request.get('_route') == 'app_admin_candidat_ajouter' : 'Ajouter' : 'Modifier') }}</button>
+
+	{{ form_end(form) }}
+{% endblock %}

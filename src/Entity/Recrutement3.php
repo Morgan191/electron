@@ -23,6 +23,10 @@ class Recrutement3
     #[ORM\Column(length: 255)]
     private ?string $video = null;
 
+    #[ORM\OneToOne(inversedBy: 'recrutement3', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Recrutement2 $Recrutement2 = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +64,18 @@ class Recrutement3
     public function setVideo(string $video): static
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    public function getRecrutement2(): ?Recrutement2
+    {
+        return $this->Recrutement2;
+    }
+
+    public function setRecrutement2(Recrutement2 $Recrutement2): static
+    {
+        $this->Recrutement2 = $Recrutement2;
 
         return $this;
     }

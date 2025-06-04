@@ -13,3 +13,5 @@ import './styles/app.scss';
 require ('bootstrap');
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+
+require('@fortawesome/fontawesome-free/css/all.min.css');

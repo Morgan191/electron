@@ -1,0 +1,54 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}liste des candidats
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des candidats</h1>
+
+	<a href="{{ path('app_admin_candidat_ajouter') }}" class="btn-success">Ajouter un candidat</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Nom</th>
+				<th scope="col">Prénom</th>
+				<th scope="col">Email</th>
+				<th scope="col">Date de naissance</th>
+				<th scope="col">Adresse</th>
+				<th scope="col">Téléphone</th>
+				<th scope="col">Nationalité</th>
+				<th scope="col">Ecole actuelle</th>
+				<th scope="col">Nom du cursus</th>
+				<th scope="col">Spécialité</th>
+				<th scope="col">Date d'entrée du cursus</th>
+				<th scope="col">Année du cursus</th>
+				<th scope="col">Sujet de recherche</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for candidat in candidats %}
+				<tr>
+
+					<td>{{ recrutement.nom }}</td>
+					<td>{{ recrutement.prenom }}</td>
+					<td>{{ recrutement.email }}</td>
+					<td>{{ recrutement2.dateNaissance }}</td>
+					<td>{{ recrutement2.adresse }}</td>
+					<td>{{ recrutement2.telephone }}</td>
+					<td>{{ recrutement2.nationalite }}</td>
+					<td>{{ recrutement2.ecoleActuelle }}</td>
+					<td>{{ recrutement2.nomCursus }}</td>
+					<td>{{ recrutement2.specialite }}</td>
+					<td>{{ recrutement2.dateEntreeCursus }}</td>
+					<td>{{ recrutement2.annéeCursus }}</td>
+					<td>{{ recrutement3.sujetRecherche }}</td>
+					<td>
+                        <a href="{{ path('app_admin_candidat_modifier', {'id' : candidat.id} )}}" class="btn btn-sm btn-primary">Modifier</a>
+                        <a href="{{ path('app_admin_candidat_supprimer', {'id' : candidat.id} )}}" onclick="return confirm('êtes vous sûr ?')" class="btn btn-sm btn-danger">Supprimer</a>
+                    </td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

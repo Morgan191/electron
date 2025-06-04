@@ -44,6 +44,13 @@ class Recrutement2
     #[ORM\Column(length: 255)]
     private ?string $carteEtudiant = null;
 
+    #[ORM\OneToOne(inversedBy: 'recrutement2', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Recrutement $Recrutement = null;
+
+    #[ORM\OneToOne(mappedBy: 'Recrutement2', cascade: ['persist', 'remove'])]
+    private ?Recrutement3 $recrutement3 = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -165,6 +172,35 @@ class Recrutement2
     public function setCarteEtudiant(string $carteEtudiant): static
     {
         $this->carteEtudiant = $carteEtudiant;
+
+        return $this;
+    }
+
+    public function getRecrutement(): ?Recrutement
+    {
+        return $this->Recrutement;
+    }
+
+    public function setRecrutement(Recrutement $Recrutement): static
+    {
+        $this->Recrutement = $Recrutement;
+
+        return $this;
+    }
+
+    public function getRecrutement3(): ?Recrutement3
+    {
+        return $this->recrutement3;
+    }
+
+    public function setRecrutement3(Recrutement3 $recrutement3): static
+    {
+        // set the owning side of the relation if necessary
+        if ($recrutement3->getRecrutement2() !== $this) {
+            $recrutement3->setRecrutement2($this);
+        }
+
+        $this->recrutement3 = $recrutement3;
 
         return $this;
     }

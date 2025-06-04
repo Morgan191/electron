@@ -13,6 +13,7 @@ final class ElectronController extends AbstractController
     public function index(AncienMembreRepository $ancienMembreRepository): Response
     {
         $anciens = $ancienMembreRepository->findAll();
+        
 
         return $this->render('electron/index.html.twig', [
             'anciens' => $anciens

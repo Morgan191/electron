@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\Candidat2Form;
 use App\Form\Candidat3Form;
 use App\Form\CandidatForm;
+use App\Service\MailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+
 
 final class LoginController extends AbstractController
 {
@@ -37,7 +42,7 @@ final class LoginController extends AbstractController
 
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $user_password_hasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $user_password_hasher, EntityManagerInterface $entityManager, MailService $mailService): Response
     {
 
         $recrutement = new Recrutement();
@@ -65,6 +70,8 @@ final class LoginController extends AbstractController
             // $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($recrutement);
             $entityManager->flush();
+
+            $mailService->sendMail("Vous êtes bien inscrit pour être candidat au Fablab ELECTRON", "Nous vous recontacterons aprés étude de votre candidature");
 
             $this->addFlash(
                 'success',

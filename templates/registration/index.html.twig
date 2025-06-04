@@ -1,16 +1,30 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Inscription pour être candidat au Fablab ELECTRON
 {% endblock %}
 
 {% block body %}
+	{% form_theme formCandidat 'bootstrap_5_layout.html.twig' %}
 	<div class="container w-25 mt-5 m-auto">
+		
+	
+		
+	
+		{% if not formCandidat.vars.valid %}
+			<div class="alert alert-danger">
+				Veuillez corriger les erreurs dans le formulaire ci-dessous.
+			</div>
+		{% endif %}
 		{{ form_start(formCandidat) }}
-            {{ form_row(formCandidat.nom)}}
-            {{ form_row(formCandidat.prenom)}}
-            {{ form_row(formCandidat.email)}}
-            {{ form_row(formCandidat.password)}}
-		    <button type="submit" class="btn btn-success">S'inscrire</button>
+		{{ form_row(formCandidat.nom)}}
+		{{ form_row(formCandidat.prenom)}}
+		{{ form_row(formCandidat.email)}}
+		{{ form_row(formCandidat.password)}}
+        {{ form_errors(formCandidat.password.first) }}
+        {{ form_errors(formCandidat.password.second) }}
+
+		<button type="submit" class="btn btn-success">S'inscrire</button>
 		{{ form_end (formCandidat) }}
 	</div>
 

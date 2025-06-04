@@ -21,6 +21,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.2",
         "@symfony/stimulus-bridge": "^4.0.1",
         "@symfony/ux-turbo": "^2.25.2"
     }
